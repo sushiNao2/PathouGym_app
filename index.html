@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gym Workout Tracker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --bg:#f4f6f8;
+  --card:#ffffff;
+  --text:#000;
+}
+.dark {
+  --bg:#121212;
+  --card:#1e1e1e;
+  --text:#fff;
+}
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial, sans-serif;
+  padding:10px;
+  margin:0;
+}
+h1 { text-align:center; }
+.day {
+  background:var(--card);
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:12px;
+}
+.exercise {
+  margin-bottom:12px;
+}
+input {
+  width:45%;
+  padding:6px;
+  margin:3px 0;
+}
+button {
+  padding:6px 10px;
+  margin-top:5px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🏋️ Gym Workout Tracker</h1>
+
+<button onclick="toggleDark()">🌙 Dark Mode</button>
+
+<div class="day">
+<h2>Day 1 – Chest</h2>
+
+<div class="exercise">
+<b>Bench Press</b><br>
+<input id="bp_w" placeholder="Weight (kg)">
+<input id="bp_r" placeholder="Reps">
+<button onclick="save('bp')">Save</button>
+<p id="bp_out"></p>
+</div>
+
+<div class="exercise">
+<b>Incline Dumbbell Press</b><br>
+<input id="idp_w" placeholder="Weight (kg)">
+<input id="idp_r" placeholder="Reps">
+<button onclick="save('idp')">Save</button>
+<p id="idp_out"></p>
+</div>
+
+</div>
+
+<div class="day">
+<h2>Day 2 – Back</h2>
+
+<div class="exercise">
+<b>Lat Pulldown</b><br>
+<input id="lp_w" placeholder="Weight (kg)">
+<input id="lp_r" placeholder="Reps">
+<button onclick="save('lp')">Save</button>
+<p id="lp_out"></p>
+</div>
+
+</div>
+
+<button onclick="clearData()">🗑 Clear All Data</button>
+
+<script>
+function save(id) {
+  let w = document.getElementById(id+"_w").value;
+  let r = document.getElementById(id+"_r").value;
+  localStorage.setItem(id, w+" kg x "+r+" reps");
+  document.getElementById(id+"_out").innerText =
+    "Saved: " + localStorage.getItem(id);
+}
+
+function load() {
+  ["bp","idp","lp"].forEach(id=>{
+    let data = localStorage.getItem(id);
+    if(data && document.getElementById(id+"_out")){
+      document.getElementById(id+"_out").innerText="Saved: "+data;
+    }
+  });
+}
+
+function clearData() {
+  localStorage.clear();
+  location.reload();
+}
+
+function toggleDark() {
+  document.body.classList.toggle("dark");
+}
+
+load();
+</script>
+
+</body>
+</html>
