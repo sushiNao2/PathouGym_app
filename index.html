@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pathou Gym – Advanced Workout</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#f4f6f8; --card:#ffffff; --text:#000; --accent:#0a7cff;
+}
+.dark{
+  --bg:#121212; --card:#1e1e1e; --text:#fff; --accent:#4da3ff;
+}
+body{
+  margin:0; font-family:Arial, sans-serif;
+  background:var(--bg); color:var(--text);
+}
+header{
+  background:var(--accent); color:#fff;
+  padding:12px; text-align:center;
+}
+nav{
+  display:flex; background:#ddd;
+}
+nav button{
+  flex:1; padding:10px; border:none;
+  background:#ccc; font-weight:bold;
+}
+nav button.active{ background:var(--accent); color:#fff; }
+section{ display:none; padding:12px; }
+section.active{ display:block; }
+.card{
+  background:var(--card); border-radius:10px;
+  padding:12px; margin-bottom:12px;
+}
+h2{ margin-top:0; }
+img{
+  width:100%; border-radius:8px; margin:6px 0;
+}
+input{
+  width:45%; padding:6px; margin:4px 0;
+}
+.small{ font-size:13px; opacity:0.85; }
+.toggle{
+  margin-top:8px; padding:6px 10px;
+}
+.save{ background:var(--accent); color:#fff; border:none; padding:6px 10px; }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Pathou Gym – Advanced</h1>
+  <button class="toggle" onclick="toggleTheme()">🌗 Light / Dark</button>
+</header>
+
+<nav>
+  <button class="active" onclick="showTab('workout',this)">Workout</button>
+  <button onclick="showTab('tracker',this)">Tracker</button>
+  <button onclick="showTab('diet',this)">Diet</button>
+</nav>
+
+<!-- WORKOUT -->
+<section id="workout" class="active">
+
+<div class="card">
+<h2>Weekly Split (Gym Only)</h2>
+<p class="small">
+Day 1 Chest • Day 2 Back • Day 3 Shoulders •  
+Day 4 Arms • Day 5 Legs • Day 6 Core+Cardio • Day 7 Rest
+</p>
+</div>
+
+<div class="card">
+<h2>Day 1 – Chest</h2>
+<img src="https://source.unsplash.com/featured/?benchpress,gym">
+<ul>
+<li>Bench Press – 3×10</li>
+<li>Incline DB Press – 3×10</li>
+<li>Chest Fly – 3×12</li>
+<li>Push-ups – 3×Max</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Day 2 – Back</h2>
+<img src="https://source.unsplash.com/featured/?latpulldown,gym">
+<ul>
+<li>Lat Pulldown – 3×12</li>
+<li>Cable Row – 3×10</li>
+<li>DB Row – 3×10</li>
+<li>Back Extension – 2×12</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Day 3 – Shoulders</h2>
+<img src="https://source.unsplash.com/featured/?shoulderpress,gym">
+<ul>
+<li>DB Shoulder Press – 3×10</li>
+<li>Lateral Raise – 3×12</li>
+<li>Front Raise – 3×12</li>
+<li>Shrugs – 2×15</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Day 4 – Arms</h2>
+<img src="https://source.unsplash.com/featured/?biceps,triceps,gym">
+<ul>
+<li>Barbell Curl – 3×10</li>
+<li>Hammer Curl – 3×10</li>
+<li>Rope Pushdown – 3×12</li>
+<li>Overhead Extension – 3×10</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Day 5 – Legs</h2>
+<img src="https://source.unsplash.com/featured/?squat,gym">
+<ul>
+<li>Squats – 3×12</li>
+<li>Leg Press – 3×10</li>
+<li>Leg Curl – 3×12</li>
+<li>Calf Raise – 3×15</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Day 6 – Core + Cardio</h2>
+<img src="https://source.unsplash.com/featured/?plank,core">
+<ul>
+<li>Plank – 3×30s</li>
+<li>Leg Raise – 3×12</li>
+<li>Crunch – 3×15</li>
+<li>Walking/Cycle – 20 min</li>
+</ul>
+</div>
+
+</section>
+
+<!-- TRACKER -->
+<section id="tracker">
+<div class="card">
+<h2>Weight & Reps Tracker</h2>
+
+<p><b>Exercise Name</b></p>
+<input id="ex" placeholder="e.g. Bench Press">
+
+<p><b>Weight (kg)</b></p>
+<input id="wt" type="number">
+
+<p><b>Reps</b></p>
+<input id="rp" type="number"><br><br>
+
+<button class="save" onclick="save()">Save</button>
+<p id="out" class="small"></p>
+</div>
+</section>
+
+<!-- DIET -->
+<section id="diet">
+<div class="card">
+<h2>Pre-Diabetic Safe Diet</h2>
+<ul>
+<li><b>Morning:</b> Warm water + 5 almonds</li>
+<li><b>Breakfast:</b> Oats + eggs / paneer</li>
+<li><b>Pre-Workout:</b> Black coffee or 1 egg</li>
+<li><b>Lunch:</b> Brown rice / chapati + dal + veg</li>
+<li><b>Post-Workout:</b> Whey (no sugar)</li>
+<li><b>Dinner:</b> Veg soup + paneer</li>
+</ul>
+<p class="small">
+Avoid sugar, soft drinks, white rice at night, fried food.
+</p>
+</div>
+</section>
+
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+}
+function save(){
+  let data = document.getElementById('ex').value+" : "+
+             document.getElementById('wt').value+"kg x "+
+             document.getElementById('rp').value+" reps";
+  localStorage.setItem('lastWorkout',data);
+  document.getElementById('out').innerText="Saved: "+data;
+}
+window.onload=()=>{
+  let d=localStorage.getItem('lastWorkout');
+  if(d) document.getElementById('out').innerText="Saved: "+d;
+};
+</script>
+
+</body>
+</html>
