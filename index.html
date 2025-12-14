@@ -2,53 +2,65 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Pathou Gym – Advanced Workout</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pathou Gym – Workout Planner</title>
 
 <style>
 :root{
-  --bg:#f4f6f8;
+  --bg:#f2f4f7;
   --card:#ffffff;
   --text:#111;
   --accent:#2e7d32;
+  --muted:#666;
 }
+.dark{
+  --bg:#121212;
+  --card:#1e1e1e;
+  --text:#f5f5f5;
+  --accent:#4caf50;
+  --muted:#aaa;
+}
+*{box-sizing:border-box}
 body{
   margin:0;
-  font-family:Arial, sans-serif;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
   background:var(--bg);
   color:var(--text);
 }
 header{
   background:var(--accent);
   color:#fff;
-  padding:15px;
+  padding:16px;
   text-align:center;
   font-size:20px;
-  font-weight:bold;
+  font-weight:600;
 }
 .container{
-  padding:15px;
+  padding:14px;
+  max-width:720px;
+  margin:auto;
 }
 .card{
   background:var(--card);
-  border-radius:12px;
-  padding:15px;
-  margin-bottom:15px;
-  box-shadow:0 4px 10px rgba(0,0,0,.1);
+  border-radius:16px;
+  padding:16px;
+  margin-bottom:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
 }
-h2{
-  margin-top:0;
-}
-.exercise-img{
+h2{margin-top:0;color:var(--accent)}
+.exercise{margin-bottom:18px}
+.exercise img{
   width:100%;
-  max-width:320px;
-  border-radius:10px;
-  margin:8px 0;
+  border-radius:14px;
+  margin-top:8px;
 }
+.small{color:var(--muted);font-size:14px}
 input{
   width:100%;
   padding:8px;
-  margin-top:5px;
+  margin:6px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
 }
 button{
   width:100%;
@@ -56,21 +68,40 @@ button{
   background:var(--accent);
   color:#fff;
   border:none;
-  border-radius:8px;
+  border-radius:10px;
   font-size:16px;
+  margin-top:8px;
 }
-small{
-  color:#555;
+.toggle{
+  position:fixed;
+  right:14px;
+  bottom:14px;
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  border-radius:50%;
+  width:54px;
+  height:54px;
+  font-size:22px;
+}
+footer{
+  text-align:center;
+  padding:16px;
+  font-size:13px;
+  color:var(--muted);
 }
 </style>
 </head>
 
 <body>
 
-<header>Pathou Gym – Weekly Workout</header>
+<header>
+  Pathou Gym – Weekly Workout Planner
+</header>
 
 <div class="container">
 
+<!-- WEEKLY SPLIT -->
 <div class="card">
 <h2>Weekly Split (Gym Only)</h2>
 <p>
@@ -82,81 +113,144 @@ Day 5 – Legs<br>
 Day 6 – Core + Cardio<br>
 Day 7 – Rest
 </p>
+<p class="small">Beginner → Intermediate friendly</p>
 </div>
 
-<!-- DAY 1 -->
+<!-- DAY 1 CHEST -->
 <div class="card">
 <h2>Day 1 – Chest</h2>
 
-<p>Bench Press – 3×10</p>
-<img src="images/bench_press.jpg" class="exercise-img">
-
-<p>Incline DB Press – 3×10</p>
-<img src="images/incline_db_press.jpg" class="exercise-img">
-
-<p>Chest Fly – 3×12</p>
-<img src="images/chest_fly.jpg" class="exercise-img">
-
-<p>Push-ups – 3×Max</p>
-<img src="images/push_up.jpg" class="exercise-img">
+<div class="exercise">
+<p><b>Bench Press – 3×10</b></p>
+<img src="images/bench_press.jpg">
+<input type="number" placeholder="Weight (kg)">
+<input type="number" placeholder="Reps">
 </div>
 
-<!-- DAY 2 -->
+<div class="exercise">
+<p><b>Incline DB Press – 3×10</b></p>
+<img src="images/incline_db_press.jpg">
+<input type="number" placeholder="Weight (kg)">
+<input type="number" placeholder="Reps">
+</div>
+
+<div class="exercise">
+<p><b>Chest Fly – 3×12</b></p>
+<img src="images/chest_fly.jpg">
+<input type="number" placeholder="Weight (kg)">
+<input type="number" placeholder="Reps">
+</div>
+
+<div class="exercise">
+<p><b>Push Ups – 3×Max</b></p>
+<img src="images/push_up.jpg">
+</div>
+</div>
+
+<!-- DAY 2 BACK -->
 <div class="card">
 <h2>Day 2 – Back</h2>
 
-<p>Lat Pulldown – 3×12</p>
-<img src="images/lat_pulldown.jpg" class="exercise-img">
-
-<p>Cable Row – 3×10</p>
-<img src="images/cable_row.jpg" class="exercise-img">
-
-<p>DB Row – 3×10</p>
-<img src="images/db_row.jpg" class="exercise-img">
-
-<p>Back Extension – 2×12</p>
-<img src="images/back_extension.jpg" class="exercise-img">
+<div class="exercise">
+<p><b>Lat Pulldown – 3×12</b></p>
+<img src="images/lat_pulldown.jpg">
 </div>
 
-<!-- DAY 3 -->
+<div class="exercise">
+<p><b>Cable Row – 3×10</b></p>
+<img src="images/cable_row.jpg">
+</div>
+
+<div class="exercise">
+<p><b>Dumbbell Row – 3×10</b></p>
+<img src="images/db_row.jpg">
+</div>
+
+<div class="exercise">
+<p><b>Back Extension – 2×12</b></p>
+<img src="images/back_extension.jpg">
+</div>
+</div>
+
+<!-- DAY 3 SHOULDERS -->
 <div class="card">
 <h2>Day 3 – Shoulders</h2>
-
-<p>DB Shoulder Press – 3×10</p>
-<img src="images/db_shoulder_press.jpg" class="exercise-img">
-
-<p>Lateral Raise – 3×12</p>
-<img src="images/lateral_raise.jpg" class="exercise-img">
-
-<p>Front Raise – 3×12</p>
-<img src="images/front_raise.jpg" class="exercise-img">
-
-<p>Shrugs – 2×15</p>
-<img src="images/shrugs.jpg" class="exercise-img">
+<div class="exercise"><p><b>Shoulder Press</b></p><img src="images/shoulder_press.jpg"></div>
+<div class="exercise"><p><b>Lateral Raise</b></p><img src="images/lateral_raise.jpg"></div>
+<div class="exercise"><p><b>Front Raise</b></p><img src="images/front_raise.jpg"></div>
+<div class="exercise"><p><b>Shrugs</b></p><img src="images/shrugs.jpg"></div>
 </div>
 
-<!-- TRACK -->
+<!-- DAY 4 ARMS -->
 <div class="card">
-<h2>Workout Tracker</h2>
-<input type="number" placeholder="Weight (kg)">
-<input type="number" placeholder="Reps">
-<button onclick="alert('Saved locally')">Save</button>
-<small>*Offline local tracking</small>
+<h2>Day 4 – Arms</h2>
+<div class="exercise"><p><b>Biceps Curl</b></p><img src="images/biceps_curl.jpg"></div>
+<div class="exercise"><p><b>Hammer Curl</b></p><img src="images/hammer_curl.jpg"></div>
+<div class="exercise"><p><b>Triceps Pushdown</b></p><img src="images/triceps_pushdown.jpg"></div>
+<div class="exercise"><p><b>Overhead Extension</b></p><img src="images/overhead_extension.jpg"></div>
+</div>
+
+<!-- DAY 5 LEGS -->
+<div class="card">
+<h2>Day 5 – Legs</h2>
+<div class="exercise"><p><b>Squat</b></p><img src="images/squat.jpg"></div>
+<div class="exercise"><p><b>Leg Press</b></p><img src="images/leg_press.jpg"></div>
+<div class="exercise"><p><b>Leg Curl</b></p><img src="images/leg_curl.jpg"></div>
+<div class="exercise"><p><b>Calf Raise</b></p><img src="images/calf_raise.jpg"></div>
+</div>
+
+<!-- DAY 6 CORE -->
+<div class="card">
+<h2>Day 6 – Core + Cardio</h2>
+<div class="exercise"><p><b>Plank</b></p><img src="images/plank.jpg"></div>
+<div class="exercise"><p><b>Crunch</b></p><img src="images/crunch.jpg"></div>
+<div class="exercise"><p><b>Treadmill Walk – 20 min</b></p><img src="images/treadmill.jpg"></div>
 </div>
 
 <!-- DIET -->
 <div class="card">
 <h2>Pre-Diabetic Safe Diet</h2>
+<ul>
+<li>Morning: Warm water + almonds</li>
+<li>Breakfast: Oats + eggs / paneer</li>
+<li>Lunch: Brown rice + dal/chicken + vegetables</li>
+<li>Snack: Apple / Guava</li>
+<li>Dinner: Protein + salad (no rice)</li>
+</ul>
+<p class="small">Avoid sugar, juice, fried food</p>
+</div>
 
-<p><b>Morning:</b> Warm water + 5 almonds + boiled egg</p>
-<p><b>Lunch:</b> Brown rice/roti + dal/chicken + vegetables</p>
-<p><b>Pre-Workout:</b> Black coffee / roasted chana</p>
-<p><b>Post-Workout:</b> Whey protein (water)</p>
-<p><b>Dinner:</b> Paneer/fish + vegetables (no rice)</p>
-
-<small>No sugar • Low GI • Gym safe</small>
+<!-- BMI -->
+<div class="card">
+<h2>BMI Calculator</h2>
+<input id="h" type="number" placeholder="Height (cm)">
+<input id="w" type="number" placeholder="Weight (kg)">
+<button onclick="calcBMI()">Calculate BMI</button>
+<p id="bmi" class="small"></p>
 </div>
 
 </div>
+
+<button class="toggle" onclick="document.body.classList.toggle('dark')">🌙</button>
+
+<footer>
+Offline • APK Ready • Beginner & Intermediate
+</footer>
+
+<script>
+function calcBMI(){
+  let h=document.getElementById("h").value/100;
+  let w=document.getElementById("w").value;
+  if(!h||!w){document.getElementById("bmi").innerText="Enter height & weight";return;}
+  let bmi=(w/(h*h)).toFixed(1);
+  let r="BMI: "+bmi;
+  if(bmi<18.5) r+=" (Underweight)";
+  else if(bmi<25) r+=" (Normal)";
+  else if(bmi<30) r+=" (Overweight)";
+  else r+=" (Obese)";
+  document.getElementById("bmi").innerText=r;
+}
+</script>
+
 </body>
 </html>
